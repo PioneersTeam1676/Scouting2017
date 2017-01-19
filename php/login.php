@@ -1,3 +1,9 @@
+<?php 
+	include "connect.inc.php";
+
+
+?>
+
 <!doctype html>
 <html>
 	<head>
@@ -7,27 +13,27 @@
 
 	<body>
 		<div class="center_div">
-			<form>
+			<form method="POST" action="index.php?login">
 				<h1>Login</h1>
 				<hr>
 				<table>
 					<tr>
 						<td>Username: </td>
-						<td><input type="text"></td>
+						<td><input name="login_username" type="text"></td>
 					</tr>
 					<tr>
 						<td>Password: </td>
-						<td><input type="password"></td>
+						<td><input name="login_pass" type="password"></td>
 					</tr>
 					<tr>
 						<td>Competition: </td>
 						<td>
-							<select>
-								<option>Competition 1</option>
-								<option>Competition 2</option>
-								<option>Competition 3</option>
-								<option>Competition 4</option>
-								<option>Competition 5</option>
+							<select name="login_comp">
+								<option value="comp1">Competition 1</option>
+								<option value="comp2">Competition 2</option>
+								<option value="comp3">Competition 3</option>
+								<option value="comp4">Competition 4</option>
+								<option value="comp5">Competition 5</option>
 							</select>
 						</td>
 					</tr>
@@ -36,33 +42,33 @@
 				<hr>
 			</form>
 
-			<form>
+			<form method="POST" action="index.php?register">
 				<h1>Create a New Account</h1>
 				<hr>
 				<table>
 					<tr>
 						<td>Username: </td>
-						<td><input type="text"></td>
+						<td><input name="regi_username" type="text"></td>
 					</tr>
 					<tr>
 						<td>Password: </td>
-						<td><input type="password"></td>
+						<td><input name="regi_pass" type="password"></td>
 					</tr>
 					<tr>
 						<td>Re-type Password: </td>
-						<td><input type="password"></td>
+						<td><input name="regi_repass" type="password"></td>
 					</tr>
 					<tr>
 						<td>First Name: </td>
-						<td><input type="text"></td>
+						<td><input name="regi_fname" type="text"></td>
 					</tr>
 					<tr>
 						<td>Last Name: </td>
-						<td><input type="text"></td>
+						<td><input name="regi_lname" type="text"></td>
 					</tr>
 					<tr>
 						<td>Team Number: </td>
-						<td><input type="number"></td>
+						<td><input name="regi_teamnum" type="number"></td>
 					</tr>
 				</table>
 				<input type="submit" value="Create">
@@ -70,4 +76,3 @@
 			</form>
 		</div>
 	</body>
-</html>
