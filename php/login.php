@@ -1,3 +1,9 @@
+<?php 
+	include "connect.inc.php";
+
+
+?>
+
 <!doctype html>
 <html>
 	<head>
