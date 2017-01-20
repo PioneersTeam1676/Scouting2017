@@ -1,5 +1,7 @@
 <?php
 	include "connect.inc.php";
+	session_start();
+	if ($_SESSION["ACL"] <= 3){
 ?>
 
 <!doctype html>
@@ -115,3 +117,7 @@
 		</form>
 	</body>
 </html>
+
+<?php
+	}
+?>

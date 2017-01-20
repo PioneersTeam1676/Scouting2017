@@ -1,5 +1,7 @@
 <?php
 	include "connect.inc.php";
+	session_start();
+	if ($_SESSION["ACL"] == 0){
 ?>
 
 <!doctype html>
@@ -50,3 +52,7 @@
 		<!-- END OF JAVASCRIPT INCLUDES -->
 	</body>
 </html>
+
+<?php
+	}
+?>
