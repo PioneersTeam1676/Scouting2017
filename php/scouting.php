@@ -44,12 +44,31 @@
 			<h3>Autonomous</h3>
 			<table>
 				<tr>
-					<td>Number of Brian's Obtained :</td>
-					<td><input type="number"></td>
+					<td>Do they cross baseline?</td>
+					<td>
+						<select name="cross_baseline">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<td>Number of Brian's Put in the Hole :</td>
-					<td><input type="number"></td>
+					<td>Gear?</td>
+					<td>
+						<select name="gear">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Shoot?</td>
+					<td>
+						<select name="shoot">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</td>
 				</tr>
 			</table>
 			<!-- END AUTO MODE FORM DATA -->
@@ -60,8 +79,10 @@
 				<tr>
 					<td>Can do hopper :</td>
 					<td>
-					    <input type="radio" name="hopper">Yes
-					    <input type="radio" name="hopper">No
+					    <select name="hopper">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -94,11 +115,72 @@
 				        <input type="radio" name="consistency" value="consistent">Consistent
 				        <input type="radio" name="consistency" value="okay">Okay
 				        <input type="radio" name="consistency" value="missing">Missing shots
-				        <input type="radio" name="consistency" value="none"
+				        <input type="radio" name="consistency" value="none">None go in
 				    </td>
 				</tr>
+				<tr>
+					<td>Place gear?</td>
+					<td>
+						<select name="place_gear">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Number of gears put on the peg :</td>
+					<td>
+						<input type="number" name="number_of_gears">
+					</td>
+				</tr>
+				<tr>
+					<td>Number of rotors turning at the end of the match :</td>
+					<td>
+						<input type="number" name="number_of_rotors">
+					</td>
+				</tr>
+				<tr>
+					<td>Play defense?</td>
+					<td>
+						<select name="defense">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Location of human player :</td>
+					<td>
+						<input type="radio" name="location_of_human" value="feeder">Feeder
+						<input type="radio" name="location_of_human" value="pilot">Pilot
+					</td>
+				</tr>
+
 			</table>
 			<!-- END TELE OP MODE FORM DATA -->
+			<hr>
+			<!-- END GAME FORM DATA-->
+			<table>
+				<tr>
+					<td>Can robot climb?</td>
+					<td>
+						<select name="can_climb">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Lights stay on after match ended?</td>
+					<td>
+						<select name="lights">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<!-- END END GAME FORM DATA-->
 			<hr>
 			<!-- POST MATCH FORM DATA -->
 			<h3>Post-Match</h3>
