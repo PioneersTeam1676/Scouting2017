@@ -22,7 +22,7 @@
 				$teleAcquireGearsType += "f.";
 			}
 
-			$scoutingQuery = "INSERT INTO scouting_main () VALUES (`$matchNum`,`$teamNum`,`$teamAlliance`,`$autoCrossBaseline`,`$autoGear`,`$autoShoot`,`$teleHopper`,`$teleAcquireBallsType`,`$teleAcquireGearsType`,`$teleShootBalls`,`$teleShootBallsConsistency`,`$telePlaceGear`,`$teleGearNumPlaced`,`$teleDefense`,`$teleLocationOfHuman`,`$endCanClimb`,`$endLights`,`$endRotor`,`$blueScore`,`$redScore`)";
+			$scoutingQuery = "INSERT INTO `matches` (`matchNum`, `teamNum`, `alliance`, `crossBaseline`, `autoGear`, `autoShoot`, `teleHopper`, `teleAcquireBallsType`, `teleAcquireGearsType`, `shootingBalls`, `shootingConsistency`, `placeGear`, `numGearPlaced`, `teleDefense`, `locationOfHuman`, `canClimb`, `lightsOn`, `rotorsTurning`, `blueScore`, `redScore`) VALUES (`$matchNum`,`$teamNum`,`$teamAlliance`,`$autoCrossBaseline`,`$autoGear`,`$autoShoot`,`$teleHopper`,`$teleAcquireBallsType`,`$teleAcquireGearsType`,`$teleShootBalls`,`$teleShootBallsConsistency`,`$telePlaceGear`,`$teleGearNumPlaced`,`$teleDefense`,`$teleLocationOfHuman`,`$endCanClimb`,`$endLights`,`$endRotor`,`$blueScore`,`$redScore`)";
 			$scoutingResult = 	$scouting_mysqli->query($scoutingQuery);
 			if (!$scoutingResult){
 				echo $scoutingQuery;
@@ -107,7 +107,7 @@
 				<tr>
 					<td>Can do hopper :</td>
 					<td>
-					  <select name="teleHopper">
+						<select name="teleHopper">
 							<option value="0">No</option>
 							<option value="1">Yes</option>
 						</select>
@@ -116,35 +116,35 @@
 				<tr>
 					<td>Can get balls from : </td>
 					<td>
-					    <input type="checkbox" name="acquire_balls_ground" value="ground">Ground
-					    <input type="checkbox" name="acquire_balls_feeder" value="feeder">Feeder Station
+							<input type="checkbox" name="acquire_balls_ground" value="ground">Ground
+							<input type="checkbox" name="acquire_balls_feeder" value="feeder">Feeder Station
 					</td>
 				</tr>
 				<tr>
-				    <td>Can get gears from :</td>
-				    <td>
-				        <input type="checkbox" name="acquire_gears_ground" value="ground">Ground
-				        <input type="checkbox" name="acquire_gears_feeder" value="feeder">Feeder station
-				    </td>
+						<td>Can get gears from :</td>
+						<td>
+								<input type="checkbox" name="acquire_gears_ground" value="ground">Ground
+								<input type="checkbox" name="acquire_gears_feeder" value="feeder">Feeder station
+						</td>
 				</tr>
 				<tr>
-				    <td>Shooting the balls :</td>
-				    <td>
-				        <input type="radio" name="teleShootBalls" value="high">High
-				        <input type="radio" name="teleShootBalls" value="low">Low
-				        <input type="radio" name="teleShootBalls" value="both">Both
-				        <input type="radio" name="teleShootBalls" value="neither">Neither
-				    </td>
+						<td>Shooting the balls :</td>
+						<td>
+								<input type="radio" name="teleShootBalls" value="high">High
+								<input type="radio" name="teleShootBalls" value="low">Low
+								<input type="radio" name="teleShootBalls" value="both">Both
+								<input type="radio" name="teleShootBalls" value="neither">Neither
+						</td>
 				</tr>
 				<tr>
-				    <td>Consistency of shots :</td>
-				    <td>
-				        <input type="radio" name="teleShootBallsConsistency" value="very">Very Consistent
-				        <input type="radio" name="teleShootBallsConsistency" value="consistent">Consistent
-				        <input type="radio" name="teleShootBallsConsistency" value="okay">Okay
-				        <input type="radio" name="teleShootBallsConsistency" value="missing">Missing shots
-				        <input type="radio" name="teleShootBallsConsistency" value="none">None go in
-				    </td>
+						<td>Consistency of shots :</td>
+						<td>
+								<input type="radio" name="teleShootBallsConsistency" value="very">Very Consistent
+								<input type="radio" name="teleShootBallsConsistency" value="consistent">Consistent
+								<input type="radio" name="teleShootBallsConsistency" value="okay">Okay
+								<input type="radio" name="teleShootBallsConsistency" value="missing">Missing shots
+								<input type="radio" name="teleShootBallsConsistency" value="none">None go in
+						</td>
 				</tr>
 				<tr>
 					<td>Place gear?</td>
