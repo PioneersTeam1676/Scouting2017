@@ -2,6 +2,34 @@
 	include "connect.inc.php";
 	session_start();
 	if ($_SESSION["ACL"] <= 3){
+		if (isset($_GET["new"])){
+			extract($_POST);
+
+			$teleAcquireBallsType = "";
+			$teleAcquireGearsType = "";
+
+			if (isset($acquire_balls_ground)){
+				$teleAcquireBallsType += "b.";
+			}
+			if (isset($acquire_balls_feeder)){
+				$teleAcquireBallsType += "f.";
+			}
+
+			if (isset($acquire_gears_ground)){
+				$teleAcquireGearsType += "b.";
+			}
+			if (isset($acquire_gears_feeder)){
+				$teleAcquireGearsType += "f.";
+			}
+
+			$scoutingQuery = "INSERT INTO scouting_main () VALUES (`$matchNum`,`$teamNum`,`$teamAlliance`,`$autoCrossBaseline`,`$autoGear`,`$autoShoot`,`$teleHopper`,`$teleAcquireBallsType`,`$teleAcquireGearsType`,`$teleShootBalls`,`$teleShootBallsConsistency`,`$telePlaceGear`,`$teleGearNumPlaced`,`$teleDefense`,`$teleLocationOfHuman`,`$endCanClimb`,`$endLights`,`$endRotor`,`$blueScore`,`$redScore`)";
+			$scoutingResult = 	$scouting_mysqli->query($scoutingQuery);
+			if (!$scoutingResult){
+				echo $scoutingQuery;
+			}else{
+				echo "Scouting data successful";
+			}
+		}
 ?>
 
 <!doctype html>
@@ -176,7 +204,7 @@
 				<tr>
 					<td>Number of rotors turning at the end of the match :</td>
 					<td>
-						<input type="number" name="endRotorEnd">
+						<input type="number" name="endRotor">
 					</td>
 				</tr>
 			</table>
