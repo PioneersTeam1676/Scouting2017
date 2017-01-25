@@ -1,5 +1,8 @@
 <?php
 	include "connect.inc.php";
+
+	if (isset($_SESSION["ACl"])){
+		if ($_SESSION["ACL"] <= 0){
 ?>
 
 <!doctype html>
@@ -50,3 +53,36 @@
 		<!-- END OF JAVASCRIPT INCLUDES -->
 	</body>
 </html>
+
+<?php 
+		}else if(isset($_SESSION["uid"])){
+?>
+<!doctype html>
+<html>
+	<head>
+		<title>Users</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+	</head>
+
+	<body>
+		<h1>Your Account</h1>
+
+		
+
+		<!-- JAVASCRIPT INCLUDES -->
+			<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script> 
+			<script type="text/javascript" src="../js/__jquery.tablesorter/jquery.tablesorter.js"></script> 
+
+			<script>
+				$(document).ready(function(){ 
+				    $("#mainTable").tablesorter(); 
+				}); 
+			</script>>
+		<!-- END OF JAVASCRIPT INCLUDES -->
+	</body>
+</html>
+
+<?php
+		}
+	}
+?>
