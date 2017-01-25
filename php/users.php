@@ -1,6 +1,7 @@
 <?php
 	include "connect.inc.php";
 
+
 	if (isset($_SESSION["ACl"])){
 		if ($_SESSION["ACL"] <= 0){
 ?>
@@ -53,6 +54,7 @@
 		<!-- END OF JAVASCRIPT INCLUDES -->
 	</body>
 </html>
+
 
 <?php 
 		}else if(isset($_SESSION["uid"])){
