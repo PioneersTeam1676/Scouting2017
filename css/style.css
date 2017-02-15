@@ -1,7 +1,6 @@
 body{
 	font-family: "Lato",Helvetica,Arial,sans-serif;
 	letter-spacing: 1px;
-	font-weight: 300;
 	line-height: 1.9;
 	color: #333;
 }
@@ -19,7 +18,13 @@ body{
 	margin-left: auto;
 	width: 970px;
 	background-color: white;
-	opacity: .6;
+	opacity: .8;
+
+}
+
+.content{
+	margin-left:5px;
+	margin-right:5px;
 }
 
 .menu{
@@ -35,6 +40,24 @@ body{
 	float: left;
 	opacity: 1;
 	text-align: center;
+	cursor: pointer;
+
+	border: 0;
+    outline: 0;
+    /*border-bottom: 5px solid #FC0;*/
+    background-color:#000;
+    color: #FFF;
+}
+
+.menu_button:hover{
+	/*color: #FC0;*/
+}
+
+.menu_button:active{
+    width: 16.666%;
+	float: left;
+	opacity: 1;
+	text-align: center;
 	color: #000;
 	cursor: pointer;
 
@@ -43,21 +66,14 @@ body{
     border-bottom: 5px solid #FFF;
 }
 
-.menu_button:hover{
-	width: 16.666%;
-	float: left;
-	opacity: 1;
-	text-align: center;
-	cursor: pointer;
-
-	border: 0;
-    outline: 0;
-    border-bottom: 5px solid #FC0;
-}
-
 .center_div{
 	margin: 0 auto;
 	text_align: center;
+}
+
+.noOverflowDiv{
+	overflow: auto;
+    white-space: nowrap;
 }
 
 select {
@@ -69,7 +85,6 @@ select {
 	border: 0;
 	border-radius: 2px;
 	height: 34px;
-	-webkit-appearance: none;
 
 	border: 0;
     outline: 0;
@@ -85,11 +100,10 @@ select:focus {
 	border: 0;
 	border-radius: 2px;
 	height: 34px;
-	-webkit-appearance: none;
 
 	border: 0;
     outline: 0;
-    border-bottom: 2px solid #FC0;
+    /*border-bottom: 2px solid #FC0;*/
 }
 
 input {
@@ -101,11 +115,44 @@ input {
 	border: 0;
 	border-radius: 2px;
 	height: 34px;
-	-webkit-appearance: none;
 
 	border: 0;
-    outline: 0;
-    border-bottom: 2px solid #DDD;
+	outline: 0;
+	border-bottom: 2px solid #DDD;
+}
+
+input[type="checkbox" i]{
+	width: 25px;
+	
+}
+
+input[type="radio" i]{
+	width: 25px;
+	
+}
+
+input[type="checkbox" i]:checked{
+	width: 25px;
+	
+}
+
+input[type="radio" i]:checked{
+	width: 25px;
+	
+}
+
+input[type="checkbox" i]:focus{
+	width: 25px;
+	
+}
+
+input[type="radio" i]:focus{
+	width: 25px;
+	
+}
+
+input[type="submit" i]{
+	font-weight:700;
 }
 
 input:focus{
@@ -117,9 +164,33 @@ input:focus{
 	border: 0;
 	border-radius: 2px;
 	height: 34px;
-	-webkit-appearance: none;
 
 	border: 0;
-    outline: 0;
-    border-bottom: 2px solid #FC0;
+	outline: 0;
+	/*border-bottom: 2px solid #FC0;*/
+}
+
+.tablesorter{
+	border: 0px solid black;
+	border-collapse: collapse;
+}
+
+#rawDataTable{
+	font-size: 11px;
+	letter-spacing: 0px;
+}
+
+.tdSorted {
+	border: .5px solid black;
+}
+
+.thSorted{
+	/*background-color: #fc0;*/
+	border: .5px solid black;
+	cursor: pointer;
+}
+
+textarea{
+	resize: none;
+
 }
