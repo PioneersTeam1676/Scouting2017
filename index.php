@@ -1,3 +1,7 @@
+<?php
+	include "php/connect.inc.php";
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,28 +19,28 @@
 				</div>
 				
 				<div class="menu">
-					<span class="menu_button" id="menu_button_login" style="background-color:#aaa" onclick="changePage(0);">
-						LOGIN
+					<span class="menu_button" id="menu_button_login" onclick="changePage(0);">
+						<b>LOGIN / LOGOUT</b>
 					</span>
 
-					<div class="menu_button" id="menu_button_blog" style="background-color:#faa" onclick="changePage(1);">
-						SCOUTING
+					<div class="menu_button" id="menu_button_blog" onclick="changePage(1);">
+						<b>SCOUTING</b>
 					</div>
 
-					<div class="menu_button" id="menu_button_test2" style="background-color:#afa" onclick="changePage(2);">
-						USERS
+					<div class="menu_button" id="menu_button_test2" onclick="changePage(2);">
+						<b>USER</b>
 					</div>
 
-					<div class="menu_button" id="menu_button_test3" style="background-color:#aaf" onclick="changePage(3);">
-						RAW DATA
+					<div class="menu_button" id="menu_button_test3" onclick="changePage(3);">
+						<b>RAW DATA</b>
 					</div>
 
-					<div class="menu_button" id="menu_button_test4" style="background-color:#faf" onclick="changePage(4);">
-						TEAMS
+					<div class="menu_button" id="menu_button_test4" onclick="changePage(4);">
+						<b>TEAMS</b>
 					</div>
 
-					<div class="menu_button" id="menu_button_contact" style="background-color:#ffa" onclick="changePage(5);">
-						CONTACT
+					<div class="menu_button" id="menu_button_contact" onclick="changePage(5);">
+						<b>CONTACT</b>
 					</div>
 				</div>
 				<div id="menuLine"></div>
@@ -63,13 +67,13 @@
 				    
 				    <div id="div_rawDataPage" >
 				        <?php
-				            include "php/contact.php";
+				            include "php/rawData.php";
 				        ?>
 				    </div>
 				    
 				    <div id="div_teamsPage" >
 				        <?php
-				            include "php/contact.php";
+				            include "php/teams.php";
 				        ?>
 				    </div>
 				    
@@ -82,7 +86,27 @@
 				<!-- End of content of page-->
 			</div>
 		</div>
+		<!-- CSS/PHP Color Implementation -->
+			<?php
+				if (isset($_SESSION['uid'])){
+					$fc = $_SESSION['favColor'];
+					$newStyleSheet = "
+						<style>
+							.menu_button{border-bottom: 5px solid $fc;}
+							.menu_button:hover{color: $fc;}
+							select:focus {border-bottom: 2px solid $fc;}
+							input:focus{border-bottom: 2px solid $fc;}
+							.thSorted{background-color: $fc;}
+
+
+						</style>
+					";
+					echo $newStyleSheet;
+				}
+			?>
+		<!-- End of Color Implementation -->
 		<!-- JAVASCRIPT INCLUDES -->
+			<script src="js/jquery-3.1.1.min.js"></script>
 			<script src="js/menu.js"></script>
 			<script src="js/main.js"></script>
 		<!-- END OF JAVASCRIPT INCLUDES -->

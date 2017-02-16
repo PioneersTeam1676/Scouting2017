@@ -1,50 +1,65 @@
 <?php
 	include "connect.inc.php";
-	session_start();
-	if ($_SESSION["ACL"] <= 3){
+
+	$dataQuery = "SELECT * FROM `users`";
+	$dataResult = $login_mysqli->query($dataQuery);
+	if (!$dataResult){
+		echo "Error executing query: (" . $login_mysqli->errno . ") " . $login_mysqli->error;
+	}else{
+		//echo "No problem";
+	}
+
+
+	if ($_SESSION['ACL'] <= 3 && $_SESSION['ACL'] != 0 && $_SESSION['ACL'] != 2){
 		if (isset($_GET["new"])){
 			extract($_POST);
 
-			$teleAcquireBallsType = "";
-			$teleAcquireGearsType = "";
-
+			$teleAcquireBallsType = " ";
+			$teleAcquireGearsType = " ";
+			$u_id = $_SESSION['uid'];
+			
 			if (isset($acquire_balls_ground)){
-				$teleAcquireBallsType += "b.";
+				$teleAcquireBallsType .= "g.";
 			}
 			if (isset($acquire_balls_feeder)){
-				$teleAcquireBallsType += "f.";
+				$teleAcquireBallsType .= "f."; 
 			}
 
 			if (isset($acquire_gears_ground)){
-				$teleAcquireGearsType += "b.";
+				$teleAcquireGearsType .= "g.";
 			}
 			if (isset($acquire_gears_feeder)){
-				$teleAcquireGearsType += "f.";
+				$teleAcquireGearsType .= "f.";
 			}
+			
+			echo $teleAcquireBallsType;
+			echo $teleAcquireGearsType;
 
-			$scoutingQuery = "INSERT INTO `matches` (`matchNum`, `teamNum`, `alliance`, `crossBaseline`, `autoGear`, `autoShoot`, `teleHopper`, `teleAcquireBallsType`, `teleAcquireGearsType`, `shootingBalls`, `shootingConsistency`, `placeGear`, `numGearPlaced`, `teleDefense`, `locationOfHuman`, `canClimb`, `lightsOn`, `rotorsTurning`, `blueScore`, `redScore`) VALUES (`$matchNum`,`$teamNum`,`$teamAlliance`,`$autoCrossBaseline`,`$autoGear`,`$autoShoot`,`$teleHopper`,`$teleAcquireBallsType`,`$teleAcquireGearsType`,`$teleShootBalls`,`$teleShootBallsConsistency`,`$telePlaceGear`,`$teleGearNumPlaced`,`$teleDefense`,`$teleLocationOfHuman`,`$endCanClimb`,`$endLights`,`$endRotor`,`$blueScore`,`$redScore`)";
-			$scoutingResult = 	$scouting_mysqli->query($scoutingQuery);
+			$scoutingQuery = "INSERT INTO `matches` (`uid`,`matchNum`, `teamNum`, `alliance`, `crossBaseline`, `autoGear`, `autoShoot`, `teleHopper`, `teleAcquireBallsType`, `teleAcquireGearsType`, `shootingBalls`, `shootingConsistency`, `placeGear`, `numGearPlaced`, `teleDefense`, `locationOfHuman`, `canClimb`, `lightsOn`, `rotorsTurning`, `blueScore`, `redScore`) VALUES ($u_id,$matchNum,$teamNum,'$teamAlliance',$autoCrossBaseline,$autoGear,$autoShoot,$teleHopper,'$teleAcquireBallsType','$teleAcquireGearsType','$teleShootBalls','$teleShootBallsConsistency',$telePlaceGear,$teleGearNumPlaced,$teleDefense,'$teleLocationOfHuman',$endCanClimb,$endLights,$endRotor,$blueScore,$redScore)";
+			
+			$scoutingResult = $scouting_mysqli->query($scoutingQuery);
 			if (!$scoutingResult){
+				echo "There was error \n";
 				echo $scoutingQuery;
-			}else{
-				echo "Scouting data successful";
+				
 			}
+			
 		}
 ?>
 
 <!doctype html>
 <html>
 	<head>
-		<title>Scouting Main</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 
 	<body>
-		<form>
+		<form method="POST" action="index.php?new">
 			<h1>Scouting</h1>
 			<hr>
 			<!-- PRE MATCH FORM DATA -->
+			<blockquote>
 			<h3>Pre-Match</h3>
+			<blockquote>
 			<table>
 				<tr>
 					<td>Match Num :</td>
@@ -66,10 +81,14 @@
 					</td>
 				</tr>
 			</table>
+			</blockquote>
+			</blockquote>
 			<!-- END PRE MATCH FORM DATA -->
 			<hr>
 			<!-- AUTO MODE FORM DATA -->
+			<blockquote>
 			<h3>Autonomous</h3>
+			<blockquote>
 			<table>
 				<tr>
 					<td>Do they cross baseline?</td>
@@ -99,10 +118,14 @@
 					</td>
 				</tr>
 			</table>
+			</blockquote>
+			</blockquote>
 			<!-- END AUTO MODE FORM DATA -->
 			<hr>
 			<!-- TELE OP MODE FORM DATA -->
+			<blockquote>
 			<h3>Tele-op</h3>
+			<blockquote>
 			<table>
 				<tr>
 					<td>Can do hopper :</td>
@@ -179,9 +202,13 @@
 				</tr>
 
 			</table>
+			</blockquote>
+			</blockquote>
 			<!-- END TELE OP MODE FORM DATA -->
-			<hr>
+			
 			<!-- END GAME FORM DATA-->
+			<blockquote>
+			<blockquote>
 			<table>
 				<tr>
 					<td>Can robot climb?</td>
@@ -208,10 +235,14 @@
 					</td>
 				</tr>
 			</table>
+			</blockquote>
+			</blockquote>
 			<!-- END END GAME FORM DATA-->
 			<hr>
 			<!-- POST MATCH FORM DATA -->
+			<blockquote>
 			<h3>Post-Match</h3>
+			<blockquote>
 			<table>
 				<tr>
 					<td>Blue Score :</td>
@@ -222,12 +253,72 @@
 					<td><input name="redScore" type="number"></td>
 				</tr>
 			</table>
+			</blockquote>
+			</blockquote>
 			<!-- END POST MATCH FORM DATA -->
-			<input type="submit" value="Post Results">
+			<input type="submit" value="POST RESULTS">
 		</form>
 	</body>
 </html>
 
 <?php
+	}elseif ($_SESSION['ACL'] == 2){
+		if (isset($_GET["superscout"])){
+			extract($_POST);
+
+			$superScoutQuery = "INSERT INTO `super_matches`(`matchNum`, `teamNum`, `alliance`, `description`, `rating`) VALUES ($matchNum,$teamNum,'$teamAlliance','$superText',$superRating)";
+			$superScoutResult = $scouting_mysqli->query($superScoutQuery);
+			if (!$superScoutResult){
+				echo "There was a problem posting the data to the server inside of Larry's server room. Query: ".$superScoutQuery;
+			}
+		}
+
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>Super Scouting</h1>
+		<hr>
+		<blockquote>
+		<form method="POST" action="index.php?superscout">
+			<table>
+				<tr>
+					<td>Match Num :</td>
+					<td><input name="matchNum" type="number"></td>
+				</tr>
+				<tr>
+					<td>Team Num :</td>
+					<td><input name="teamNum" type="number"></td>
+				</tr>
+				<tr>
+					<td>Alliance :</td>
+					<td>
+						<div class="styled_select">
+							<select name="teamAlliance">
+								<option value="blue" >Blue Alliance</option>
+								<option value="red" >Red Alliance</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<hr>
+			<textarea placeholder="Enter relevant information about the robot here" rows="4" cols="107" name="superText"></textarea>
+			Robot Rating(1-5) : <input type="number" max="5" min="1" name="superRating" value="3">
+			<br>
+			<br>
+			<input type="submit" value="POST RESULTS">
+			<br>
+		</form>
+		</blockquote>
+	</body>
+</html>
+
+<?php
+	}else{
+		echo 'You are not permitted to submit data.';
 	}
 ?>
